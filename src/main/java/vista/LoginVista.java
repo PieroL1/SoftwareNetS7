@@ -73,7 +73,4 @@ public class LoginVista extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new LoginVista().setVisible(true));
-    }
 }
