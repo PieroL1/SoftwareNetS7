@@ -18,20 +18,29 @@ public class DashboardControlador {
         if (rolUsuario.equals("Usuario")) {
             vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
         } else if (rolUsuario.equals("Técnico")) {
-            vista.getBtnVerTareas().addActionListener(e -> abrirConsultaTecnicos());
+            vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
+            vista.getBtnVerTareas().addActionListener(e -> abrirConsultaTareas());
             vista.getBtnDiccionarioFallas().addActionListener(e -> abrirDiccionarioFallas());
+            vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirConsultaHistorial());
         } else if (rolUsuario.equals("Jefe de Área")) {
+            vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
             vista.getBtnAsignarIncidencias().addActionListener(e -> abrirAsignacionIncidencias());
-            vista.getBtnReportes().addActionListener(e -> abrirReportes());
+            vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirConsultaHistorial());
+            vista.getBtnReportes().addActionListener(e -> abrirEstadosPC());
+            
         }
     }
 
     private void abrirRegistroIncidencia() {
         JOptionPane.showMessageDialog(vista, "Abrir módulo de Registro de Incidencias");
     }
+    
+    private void abrirConsultaHistorial() {
+        JOptionPane.showMessageDialog(vista, "Abrir módulo de Consulta Historial");
+    }
 
-    private void abrirConsultaTecnicos() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Consulta de Técnicos");
+    private void abrirConsultaTareas() {
+        JOptionPane.showMessageDialog(vista, "Abrir módulo de Consulta de Tareas");
     }
 
     private void abrirDiccionarioFallas() {
@@ -42,7 +51,11 @@ public class DashboardControlador {
         JOptionPane.showMessageDialog(vista, "Abrir módulo de Asignación de Incidencias");
     }
 
-    private void abrirReportes() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Reportes");
+    private void abrirEstadosPC() {
+        JOptionPane.showMessageDialog(vista, "Abrir módulo de Estados de PC");
+    }
+    
+    private void abrirSolicitarRepuesto() {
+        JOptionPane.showMessageDialog(vista, "Abrir módulo de Solicitar Repuesto");
     }
 }
