@@ -21,21 +21,31 @@ public class ConexionBD {
     }
 
     public static boolean validarUsuario(String email, String password) {
-        String query = "SELECT * FROM usuarios WHERE email = ? AND password = SHA2(?, 256)";
+        String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
         try (Connection conexion = obtenerConexion();
              PreparedStatement stmt = conexion.prepareStatement(query)) {
+
+            System.out.println("Intentando login con:");
+            System.out.println("Email: " + email);
+            System.out.println("Contraseña: " + password);
+
             stmt.setString(1, email);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
-            return rs.next(); // Si encuentra un usuario, retorna true
+
+            boolean existe = rs.next();
+            System.out.println("¿Usuario encontrado?: " + existe);
+            return existe;
         } catch (SQLException e) {
             System.err.println("Error al validar usuario: " + e.getMessage());
             return false;
         }
     }
 
+
+
     public static String obtenerRolUsuario(String email, String password) {
-        String query = "SELECT rol FROM usuarios WHERE email = ? AND password = SHA2(?, 256)";
+        String query = "SELECT rol FROM usuarios WHERE email = ? AND password = ?";
         try (Connection conexion = obtenerConexion();
              PreparedStatement stmt = conexion.prepareStatement(query)) {
             stmt.setString(1, email);
@@ -47,6 +57,6 @@ public class ConexionBD {
         } catch (SQLException e) {
             System.err.println("Error al obtener rol del usuario: " + e.getMessage());
         }
-        return null;
+        return null; 
     }
 }
