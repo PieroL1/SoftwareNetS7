@@ -1,7 +1,11 @@
 package controlador;
 
 import vista.DashboardVista;
+import vista.LoginVista;
+
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class DashboardControlador {
     private DashboardVista vista;
@@ -11,6 +15,7 @@ public class DashboardControlador {
         this.rolUsuario = rolUsuario;
         this.vista = new DashboardVista(rolUsuario);
         agregarEventos();
+        agregarCierreVentana();
         vista.setVisible(true);
     }
 
@@ -21,21 +26,31 @@ public class DashboardControlador {
             vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
             vista.getBtnVerTareas().addActionListener(e -> abrirConsultaTareas());
             vista.getBtnDiccionarioFallas().addActionListener(e -> abrirDiccionarioFallas());
-             vista.getBtnDiccionarioFallas().addActionListener(e -> abrirSolicitarRepuesto());
-            vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirConsultaHistorial());
+            vista.getBtnSolicitarRepuesto().addActionListener(e -> abrirSolicitarRepuesto());
+            vista.getBtnConsultaHistorial().addActionListener(e -> abrirConsultaHistorial());
         } else if (rolUsuario.equals("Jefe de Área")) {
             vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
             vista.getBtnAsignarIncidencias().addActionListener(e -> abrirAsignacionIncidencias());
-            vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirConsultaHistorial());
+            vista.getBtnConsultaHistorial().addActionListener(e -> abrirConsultaHistorial());
             vista.getBtnReportes().addActionListener(e -> abrirEstadosPC());
-            
         }
+    }
+
+    private void agregarCierreVentana() {
+        vista.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        vista.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                vista.dispose();
+                SwingUtilities.invokeLater(() -> new LoginVista().setVisible(true));
+            }
+        });
     }
 
     private void abrirRegistroIncidencia() {
         JOptionPane.showMessageDialog(vista, "Abrir módulo de Registro de Incidencias");
     }
-    
+
     private void abrirConsultaHistorial() {
         JOptionPane.showMessageDialog(vista, "Abrir módulo de Consulta Historial");
     }
@@ -55,7 +70,7 @@ public class DashboardControlador {
     private void abrirEstadosPC() {
         JOptionPane.showMessageDialog(vista, "Abrir módulo de Estados de PC");
     }
-    
+
     private void abrirSolicitarRepuesto() {
         JOptionPane.showMessageDialog(vista, "Abrir módulo de Solicitar Repuesto");
     }
