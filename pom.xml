@@ -9,5 +9,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
         <exec.mainClass>com.mycompany.softwarenets7.SoftwareNetS7</exec.mainClass>
+
+        
     </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version> <!-- Usa la última versión disponible -->
+        </dependency>
+    </dependencies>
+
+    
+    
 </project>
