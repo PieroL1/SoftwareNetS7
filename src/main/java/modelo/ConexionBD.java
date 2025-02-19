@@ -119,5 +119,37 @@ public class ConexionBD {
         }
     }
     
+    public static int obtenerIdUsuario(String email, String password) {
+    String query = "SELECT id_usuario FROM usuarios WHERE email = ? AND password = ?";
+    try (Connection conexion = obtenerConexion();
+         PreparedStatement stmt = conexion.prepareStatement(query)) {
+        stmt.setString(1, email);
+        stmt.setString(2, password);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return rs.getInt("id_usuario"); // Devuelve el ID del usuario
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al obtener ID del usuario: " + e.getMessage());
+    }
+    return -1; // Devuelve -1 si no encuentra el usuario
+}
     
+    public static List<String> obtenerListaRepuestos() {
+    List<String> repuestos = new ArrayList<>();
+    String query = "SELECT id_repuesto, nombre FROM repuestos"; // Ajusta según tu tabla de BD
+
+    try (Connection conexion = obtenerConexion();
+         PreparedStatement stmt = conexion.prepareStatement(query);
+         ResultSet rs = stmt.executeQuery()) {
+        while (rs.next()) {
+            repuestos.add(rs.getInt("id_repuesto") + " - " + rs.getString("nombre"));
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al obtener repuestos: " + e.getMessage());
+    }
+    return repuestos;
+}
+
+
 }

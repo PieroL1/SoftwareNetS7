@@ -60,17 +60,20 @@ public class LoginVista extends JFrame {
     }
 
     private void validarLogin() {
-        String email = emailField.getText();
-        String password = new String(passwordField.getPassword());
-        
-        String rol = ConexionBD.obtenerRolUsuario(email, password);
-        if (rol != null) {
-            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como " + rol, "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            SwingUtilities.invokeLater(() -> new DashboardControlador(rol));
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Credenciales incorrectas. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+    String email = emailField.getText();
+    String password = new String(passwordField.getPassword());
+    
+    String rol = ConexionBD.obtenerRolUsuario(email, password);
+    int idUsuario = ConexionBD.obtenerIdUsuario(email, password); // Nuevo método para obtener ID
+
+    if (rol != null && idUsuario != -1) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como " + rol, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        SwingUtilities.invokeLater(() -> new DashboardControlador(idUsuario, rol)); // Ahora pasamos el ID y el rol
+        dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Credenciales incorrectas. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+
 
 }

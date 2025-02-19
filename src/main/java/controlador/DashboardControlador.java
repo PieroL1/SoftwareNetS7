@@ -2,17 +2,19 @@ package controlador;
 
 import vista.DashboardVista;
 import vista.LoginVista;
-
+import vista.ConsultaHistorialVista;
+import vista.ConsultaTareasVista;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import vista.ConsultaHistorialVista;
 
 public class DashboardControlador {
+    private int idUsuario;
     private DashboardVista vista;
     private String rolUsuario;
 
-    public DashboardControlador(String rolUsuario) {
+    public DashboardControlador(int idUsuario, String rolUsuario) {
+        this.idUsuario = idUsuario;
         this.rolUsuario = rolUsuario;
         this.vista = new DashboardVista(rolUsuario);
         agregarEventos();
@@ -27,7 +29,7 @@ public class DashboardControlador {
             vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
             vista.getBtnVerTareas().addActionListener(e -> abrirConsultaTareas());
             vista.getBtnDiccionarioFallas().addActionListener(e -> abrirDiccionarioFallas());
-            vista.getBtnSolicitarRepuesto().addActionListener(e -> abrirSolicitarRepuesto());
+            vista.getBtnSolicitarRepuesto().addActionListener(e -> abrirSolicitudRepuesto());
             vista.getBtnConsultaHistorial().addActionListener(e -> abrirConsultaHistorial());
         } else if (rolUsuario.equals("Jefe de Área")) {
             vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
@@ -53,14 +55,11 @@ public class DashboardControlador {
     }
 
     private void abrirConsultaHistorial() {
-    new ConsultaHistorialControlador();
-}
-
-
-
+        new ConsultaHistorialControlador();
+    }
 
     private void abrirConsultaTareas() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Consulta de Tareas");
+        new ConsultaTareasControlador(idUsuario);
     }
 
     private void abrirDiccionarioFallas() {
@@ -75,7 +74,7 @@ public class DashboardControlador {
         JOptionPane.showMessageDialog(vista, "Abrir módulo de Estados de PC");
     }
 
-    private void abrirSolicitarRepuesto() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Solicitar Repuesto");
+    private void abrirSolicitudRepuesto() {
+        SwingUtilities.invokeLater(() -> new SolicitarRepuestosControlador());
     }
 }
