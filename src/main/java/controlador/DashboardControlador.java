@@ -6,6 +6,7 @@ import vista.LoginVista;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import vista.ConsultaHistorialVista;
 
 public class DashboardControlador {
     private DashboardVista vista;
@@ -52,8 +53,11 @@ public class DashboardControlador {
     }
 
     private void abrirConsultaHistorial() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Consulta Historial");
-    }
+    new ConsultaHistorialControlador();
+}
+
+
+
 
     private void abrirConsultaTareas() {
         JOptionPane.showMessageDialog(vista, "Abrir módulo de Consulta de Tareas");
