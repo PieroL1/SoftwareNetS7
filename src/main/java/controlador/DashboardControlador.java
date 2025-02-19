@@ -63,7 +63,7 @@ public class DashboardControlador {
     }
 
     private void abrirDiccionarioFallas() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Diccionario de Fallas");
+        new DiccionarioFallasControlador();
     }
 
     private void abrirAsignacionIncidencias() {
