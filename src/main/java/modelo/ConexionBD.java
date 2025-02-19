@@ -57,6 +57,6 @@ public class ConexionBD {
         } catch (SQLException e) {
             System.err.println("Error al obtener rol del usuario: " + e.getMessage());
         }
-        return null;
+        return null; 
     }
 }
