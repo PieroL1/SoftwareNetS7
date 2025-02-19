@@ -59,4 +59,22 @@ public class ConexionBD {
         }
         return null; 
     }
+    
+    public static boolean insertarIncidencia(String codigoEquipo, String descripcion) {
+        String query = "INSERT INTO incidencias (id_equipo, descripcion, estado, fecha_registro) VALUES ((SELECT id_equipo FROM equipos WHERE codigo_equipo = ?), ?, 'Pendiente', NOW())";
+        try (Connection conexion = obtenerConexion();
+             PreparedStatement stmt = conexion.prepareStatement(query)) {
+            stmt.setString(1, codigoEquipo);
+            stmt.setString(2, descripcion);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al insertar incidencia: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    
+    
+    
+    
 }

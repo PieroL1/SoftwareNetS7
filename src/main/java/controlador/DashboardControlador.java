@@ -48,7 +48,7 @@ public class DashboardControlador {
     }
 
     private void abrirRegistroIncidencia() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Registro de Incidencias");
+        new RegistroIncidenciaControlador();
     }
 
     private void abrirConsultaHistorial() {
