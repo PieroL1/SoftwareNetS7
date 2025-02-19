@@ -64,7 +64,7 @@ public class DashboardControlador {
     }
 
     private void abrirAsignacionIncidencias() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Asignación de Incidencias");
+        new AsignacionIncidenciaControlador();
     }
 
     private void abrirEstadosPC() {
