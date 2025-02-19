@@ -14,13 +14,20 @@
     </properties>
     
     <dependencies>
+        <!-- Conector MySQL actualizado -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version> <!-- Usa la última versión disponible -->
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+        <!-- Otras dependencias necesarias -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
         </dependency>
     </dependencies>
 
-    
     
 </project>
