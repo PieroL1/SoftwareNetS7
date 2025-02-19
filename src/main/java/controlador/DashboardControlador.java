@@ -21,6 +21,7 @@ public class DashboardControlador {
             vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
             vista.getBtnVerTareas().addActionListener(e -> abrirConsultaTareas());
             vista.getBtnDiccionarioFallas().addActionListener(e -> abrirDiccionarioFallas());
+             vista.getBtnDiccionarioFallas().addActionListener(e -> abrirSolicitarRepuesto());
             vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirConsultaHistorial());
         } else if (rolUsuario.equals("Jefe de Área")) {
             vista.getBtnRegistrarIncidencia().addActionListener(e -> abrirRegistroIncidencia());
