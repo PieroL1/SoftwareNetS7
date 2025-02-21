@@ -7,6 +7,7 @@ import vista.ConsultaTareasVista;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import vista.ReporteVista;
 
 public class DashboardControlador {
     private int idUsuario;
@@ -71,7 +72,7 @@ public class DashboardControlador {
     }
 
     private void abrirEstadosPC() {
-        JOptionPane.showMessageDialog(vista, "Abrir módulo de Estados de PC");
+        new ReporteVista().setVisible(true);
     }
 
     private void abrirSolicitudRepuesto() {

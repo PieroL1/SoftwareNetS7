@@ -29,7 +29,7 @@ public class LoginVista extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-        setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("/logo.png")).getImage());
 
         // Panel principal con gradiente
         mainPanel = new JPanel() {
@@ -75,13 +75,13 @@ logoPanel.setOpaque(false);
 logoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 // Cargar la imagen y redimensionarla
-ImageIcon logoIcon = new ImageIcon(getClass().getResource("/logo.png"));
-Image image = logoIcon.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH); // Ajusta el tamaño
-JLabel logoLabel = new JLabel(new ImageIcon(image));
-logoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+//ImageIcon logoIcon = new ImageIcon(getClass().getResource("/logo.png"));
+//Image image = logoIcon.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH); // Ajusta el tamaño
+//JLabel logoLabel = new JLabel(new ImageIcon(image));
+//logoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 // Agregar la imagen al panel del logo
-logoPanel.add(logoLabel);
+//logoPanel.add(logoLabel);
 
 // Agregar un espacio antes del título
 titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
