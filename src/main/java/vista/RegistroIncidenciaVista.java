@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 public class RegistroIncidenciaVista extends JFrame {
     private JTextField txtCodigoEquipo;
     private JTextArea txtDescripcion;
+    private JTextField txtIdUsuarioRegistro;
     private JButton btnRegistrar, btnCancelar;
     private Color colorPrimario = new Color(41, 128, 185);
     private Color colorFondo = new Color(236, 240, 241);
@@ -14,7 +15,7 @@ public class RegistroIncidenciaVista extends JFrame {
 
     public RegistroIncidenciaVista() {
         setTitle("Registrar Incidencia");
-        setSize(500, 400);
+        setSize(500, 450);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
@@ -28,6 +29,7 @@ public class RegistroIncidenciaVista extends JFrame {
         gbc.weightx = 1;
         gbc.insets = new Insets(10, 10, 10, 10);
 
+        // Campo Código del Equipo
         JLabel lblCodigo = new JLabel("Código del Equipo:");
         lblCodigo.setFont(new Font("Dialog", Font.BOLD, 14));
         lblCodigo.setForeground(colorTexto);
@@ -40,10 +42,24 @@ public class RegistroIncidenciaVista extends JFrame {
         gbc.gridx = 1; gbc.gridy = 0;
         panelPrincipal.add(txtCodigoEquipo, gbc);
 
+        // Campo ID Usuario Registro
+        JLabel lblIdUsuario = new JLabel("ID Usuario Registro:");
+        lblIdUsuario.setFont(new Font("Dialog", Font.BOLD, 14));
+        lblIdUsuario.setForeground(colorTexto);
+        gbc.gridx = 0; gbc.gridy = 1;
+        panelPrincipal.add(lblIdUsuario, gbc);
+
+        txtIdUsuarioRegistro = new JTextField();
+        txtIdUsuarioRegistro.setFont(new Font("Dialog", Font.PLAIN, 14));
+        txtIdUsuarioRegistro.setPreferredSize(new Dimension(250, 30));
+        gbc.gridx = 1; gbc.gridy = 1;
+        panelPrincipal.add(txtIdUsuarioRegistro, gbc);
+
+        // Campo Descripción
         JLabel lblDescripcion = new JLabel("Descripción del Problema:");
         lblDescripcion.setFont(new Font("Dialog", Font.BOLD, 14));
         lblDescripcion.setForeground(colorTexto);
-        gbc.gridx = 0; gbc.gridy = 1;
+        gbc.gridx = 0; gbc.gridy = 2;
         panelPrincipal.add(lblDescripcion, gbc);
 
         txtDescripcion = new JTextArea(6, 30);
@@ -52,9 +68,10 @@ public class RegistroIncidenciaVista extends JFrame {
         txtDescripcion.setWrapStyleWord(true);
         JScrollPane scrollDescripcion = new JScrollPane(txtDescripcion);
         scrollDescripcion.setPreferredSize(new Dimension(250, 100));
-        gbc.gridx = 1; gbc.gridy = 1;
+        gbc.gridx = 1; gbc.gridy = 2;
         panelPrincipal.add(scrollDescripcion, gbc);
 
+        // Panel de botones
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout(FlowLayout.RIGHT));
         panelBotones.setBackground(colorFondo);
@@ -78,6 +95,7 @@ public class RegistroIncidenciaVista extends JFrame {
 
     public JTextField getTxtCodigoEquipo() { return txtCodigoEquipo; }
     public JTextArea getTxtDescripcion() { return txtDescripcion; }
+    public JTextField getTxtIdUsuarioRegistro() { return txtIdUsuarioRegistro; }
     public JButton getBtnRegistrar() { return btnRegistrar; }
     public JButton getBtnCancelar() { return btnCancelar; }
 }

@@ -30,13 +30,16 @@ public class RegistroIncidenciaControlador {
     private void registrarIncidencia() {
         String codigoEquipo = vista.getTxtCodigoEquipo().getText();
         String descripcion = vista.getTxtDescripcion().getText();
+        
+        String idUsuarioRegistro = vista.getTxtIdUsuarioRegistro().getText();
+        int idUsua2 = Integer.parseInt(idUsuarioRegistro);
 
         if (codigoEquipo.isEmpty() || descripcion.isEmpty()) {
             JOptionPane.showMessageDialog(vista, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        boolean registrado = ConexionBD.insertarIncidencia(codigoEquipo, descripcion);
+        boolean registrado = ConexionBD.insertarIncidencia(codigoEquipo,idUsua2, descripcion);
         if (registrado) {
             JOptionPane.showMessageDialog(vista, "Incidencia registrada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             vista.dispose();
